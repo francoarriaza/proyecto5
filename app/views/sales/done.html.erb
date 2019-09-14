@@ -1,0 +1,35 @@
+<h1>El registro fue almacenado con éxito!</h1>
+
+<table>
+  <thead>
+    <th>Nº de Registro</th>
+    <th>Detalle</th>
+    <th>Valor</th>
+    <th>Descuento</th>
+    <th>IVA</th>
+    <th>Total</th>
+  </thead>
+
+<tbody>
+<% @sales.each do |s| %>
+<tr>
+  <td> <%= s.code %> </td>
+  <td> <%= s.detail %> </td>
+  <td> <%= s.value %> </td>
+  <td> <%= s.discount %> </td>
+  <td>
+    <%=
+    if s.tax == 1
+    "0%"
+    else
+    "19%"
+    end
+    %></td>
+  <td> <%= s.total %> </td>
+</tr>
+<% end %>
+</tbody>
+
+</table>
+
+<%= link_to "Volver", sales_new_path %>
